@@ -7,8 +7,11 @@ public class Dangeralert : Enemy
     public GameObject player;
     public float speed;
     private float distance;
-
-    public override void OnHitWith(Entity player ) { }
+    private void FixedUpdate()
+    {
+        Behaviour();
+    }
+    public override void OnHitWith(Entity entity) { if (entity is Player) { entity.TakeDamage(this.DamageHit); } }
     public override void Behaviour() 
     {
         distance = Vector2.Distance(transform.position, player.transform.position);

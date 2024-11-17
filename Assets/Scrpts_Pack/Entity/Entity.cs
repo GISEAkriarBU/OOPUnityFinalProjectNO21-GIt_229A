@@ -6,7 +6,6 @@ public class Entity : MonoBehaviour
 {
     private int health;
     public int Health { get { return health; } set { health = value; } }
-    public Animator anim;
     public Rigidbody2D rb;
     public void Init(int newHealth) { Health = newHealth; }
 

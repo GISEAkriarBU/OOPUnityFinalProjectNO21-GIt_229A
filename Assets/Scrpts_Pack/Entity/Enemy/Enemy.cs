@@ -9,5 +9,5 @@ public abstract class Enemy : MonoBehaviour
     public int DamageHit { get { return damagehit; } set { damagehit = value; } }
     public abstract void OnHitWith(Entity entity);
     public abstract void Behaviour();
-    private void start () { Behaviour(); }
+    private void Start () { Behaviour(); }
 }

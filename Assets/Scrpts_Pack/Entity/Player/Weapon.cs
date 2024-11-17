@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
-public abstract class _Weapon : MonoBehaviour
+public abstract class Weapon : MonoBehaviour
 {
-    [SerializeField]
     private int damage;
     public int Damage { get { return damage; } set { damage = value; } }
 
     public IShoot shooter;
-    public abstract void OnHitWith (Entity entity);
-    public abstract void Move ();
+    public abstract void OnHitWith(Entity entity);
+    public abstract void Move();
     public void Init(int newDamage, IShoot newOwner)
     {
         Damage = newDamage;
