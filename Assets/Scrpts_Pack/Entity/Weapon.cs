@@ -12,6 +12,7 @@ public abstract class _Weapon : MonoBehaviour
     public IShoot shooter;
     public abstract void OnHitWith (Entity entity);
     public abstract void Move ();
+    
     public void Init(int newDamage, IShoot newOwner)
     {
         Damage = newDamage;

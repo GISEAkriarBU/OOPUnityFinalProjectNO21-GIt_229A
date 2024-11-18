@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
-public abstract class Enemy : MonoBehaviour
+public abstract class Enemy : Entity
 {
     private int damagehit;
     public int DamageHit { get { return damagehit; } set { damagehit = value; } }

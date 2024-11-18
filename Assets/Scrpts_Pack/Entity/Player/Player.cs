@@ -26,6 +26,8 @@ public class Player : Entity,IShoot
             GameObject obj = Instantiate(Bullet, BulletSpawn.position, BulletSpawn.rotation);
             BlueEnergyBullet bEnergy = obj.GetComponent<BlueEnergyBullet>();
             bEnergy.Init(20, this);
+
+            BulletWaitTime = 0;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)

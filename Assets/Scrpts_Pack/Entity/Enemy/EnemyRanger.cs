@@ -4,34 +4,37 @@ using UnityEngine;
 
 public class EnemyRanger : Enemy , IShoot
 {
-    public GameObject player;
-    public GameObject Bullet { get; set; }
-    public Transform BulletSpawn { get; set; }
-    public float BulletTimer { get; set; }
-    public float BulletWaitTime { get; set; } = 2.0f; // Time between shots
-
+    [SerializeField] private Player player;
+    // Distance to start shooting
     private float distance;
-    public float shootingRange = 10f; // Distance to start shooting
-    public override void OnHitWith(Entity entity) { if (entity is Player) { entity.TakeDamage(this.DamageHit); } }
+    public float shootingRange = 10f; 
+    
+    [SerializeField]
+    private GameObject bullet;
+    public GameObject Bullet { get { return bullet; } set { bullet = value; } }
+    
+    [SerializeField]
+    private Transform bulletSpawn;
+    public Transform BulletSpawn { get { return bulletSpawn; } set { bulletSpawn = value; } }
+
+    [field: SerializeField]
+    public float BulletTimer { get; set; }
+    [field: SerializeField]
+    public float BulletWaitTime { get; set; }
 
     private void Start()
     {
-        // Initialize bullet spawn point (e.g., a child object)
-        BulletSpawn = transform.Find("BulletSpawnPoint");
-        BulletTimer = BulletWaitTime;
+        Debug.Log($" enemy look at you");
     }
 
     private void Update()
-    {
+    { 
+        BulletWaitTime += Time.deltaTime;
         Behaviour();
-        BulletTimer -= Time.deltaTime;
-        if (distance <= shootingRange && BulletTimer <= 0)
-        {
-            Shoot();
-            BulletTimer = BulletWaitTime;
-        }
+       
+        
     }
-
+    public override void OnHitWith(Entity entity) { if (entity is Player) { entity.TakeDamage(this.DamageHit); } }
     public override void Behaviour()
     {
         distance = Vector2.Distance(transform.position, player.transform.position);
@@ -39,15 +42,26 @@ public class EnemyRanger : Enemy , IShoot
 
         // Track the player without moving closer (optional logic to add)
         transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
+        //for shoot
+        float distanceP = direction.magnitude;
+        if (distanceP <= shootingRange) { Shoot(); }
     }
 
     public void Shoot()
     {
-        if (Bullet != null && BulletSpawn != null)
+        if (BulletWaitTime >= BulletTimer)
         {
-            GameObject obj = Instantiate(Bullet, BulletSpawn.position, BulletSpawn.rotation);
+            GameObject obj = Instantiate(bullet, BulletSpawn.position, Quaternion.identity);
             RedEnergyBullet rEnergy = obj.GetComponent<RedEnergyBullet>();
             rEnergy.Init(20, this);
+
+            BulletWaitTime = 0;
         }
     }
+     private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Player player = collision.gameObject.GetComponent<Player>();
+        if (player != null) { OnHitWith(player); }
+    }
+    
 }

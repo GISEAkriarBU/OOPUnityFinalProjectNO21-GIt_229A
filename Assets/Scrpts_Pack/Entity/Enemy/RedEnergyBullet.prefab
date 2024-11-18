@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.008079732, y: 0, z: 0}
-  m_LocalScale: {x: 0.8055499, y: 0.8055499, z: 0.8055499}
+  m_LocalScale: {x: 1, y: 0.8055499, z: 0.8055499}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5890957105961699118}
@@ -95,6 +95,8 @@ GameObject:
   - component: {fileID: 5890957105961699118}
   - component: {fileID: 5453324723869443592}
   - component: {fileID: 5030170157495709892}
+  - component: {fileID: 6990830533311750280}
+  - component: {fileID: 517714232489691907}
   m_Layer: 8
   m_Name: RedEnergyBullet
   m_TagString: Enemy
@@ -112,7 +114,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.937, y: -1.0745493, z: 0}
-  m_LocalScale: {x: 0.17327231, y: 0.17327231, z: 0.17327231}
+  m_LocalScale: {x: 1, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1289927397297962416}
@@ -197,3 +199,52 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &6990830533311750280
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7053687123727994779}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &517714232489691907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7053687123727994779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7084115d48cdc84ebe31c604f13f075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  rb2d: {fileID: 5030170157495709892}

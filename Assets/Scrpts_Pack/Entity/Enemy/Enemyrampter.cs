@@ -12,7 +12,9 @@ public class Enemyrampter : Enemy
     {
         Behaviour();
     }
+    
     public override void OnHitWith(Entity entity) { if (entity is Player) { entity.TakeDamage(this.DamageHit); } }
+    
     public override void Behaviour() 
     {
         distance = Vector2.Distance(transform.position, player.transform.position);
