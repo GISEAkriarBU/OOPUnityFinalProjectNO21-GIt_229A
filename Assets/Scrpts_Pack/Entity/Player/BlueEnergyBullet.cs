@@ -1,9 +1,9 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
-public class BlueEnergyBullet : _Weapon
+public class BlueEnergyBullet : _Weapon //override มาจาก _Weapon  
 {
     private float speed;
     public override void OnHitWith(Entity enemy) { if (enemy is Enemy) { enemy.TakeDamage(this.Damage); Destroy(this.gameObject); } else if (enemy is not Enemy){ Destroy(this.gameObject); } }

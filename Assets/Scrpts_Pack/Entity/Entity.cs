@@ -1,8 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Entity : MonoBehaviour
+public class Entity : MonoBehaviour //ฐานหลัก ของทุก scripts Entity ตัวอื่นๆในเกม
 {
     private int health;
     public int Health { get { return health; } set { health = value; } }

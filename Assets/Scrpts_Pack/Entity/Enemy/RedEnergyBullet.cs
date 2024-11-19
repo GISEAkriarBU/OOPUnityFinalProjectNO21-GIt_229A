@@ -1,8 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RedEnergyBullet : _Weapon
+public class RedEnergyBullet : _Weapon //override มาจาก _Weapon 
 {
     [SerializeField] private Rigidbody2D rb2d;
     private float speed;

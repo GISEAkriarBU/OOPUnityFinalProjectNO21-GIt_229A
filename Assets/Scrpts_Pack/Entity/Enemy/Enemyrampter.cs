@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
-public class Enemyrampter : Enemy
+public class Enemyrampter : Enemy //override ????? Enemy
 {
     public GameObject player;
     public float speed;

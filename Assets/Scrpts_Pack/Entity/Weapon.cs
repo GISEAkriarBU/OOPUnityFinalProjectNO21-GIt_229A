@@ -1,9 +1,9 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
-public abstract class _Weapon : MonoBehaviour
+public abstract class _Weapon : MonoBehaviour //override ไปสู่อาวุธสองชิ้น 
 {
     [SerializeField]
     private int damage;

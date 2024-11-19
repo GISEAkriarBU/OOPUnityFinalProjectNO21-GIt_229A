@@ -1,8 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyRanger : Enemy , IShoot
+public class EnemyRanger : Enemy , IShoot //override มาจาก Enemy และ Abstract interfere จาก IShoot
 {
     [SerializeField] private Player player;
     // Distance to start shooting

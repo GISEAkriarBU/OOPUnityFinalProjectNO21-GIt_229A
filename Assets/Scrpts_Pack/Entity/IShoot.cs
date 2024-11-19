@@ -1,8 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IShoot 
+public interface IShoot //abstract interfere ไว้ให้สำหรับ entity ที่มีความสามารถในการ ยิง ได้
 {
     Transform BulletSpawn { get; set; }
     GameObject Bullet { get; set; }

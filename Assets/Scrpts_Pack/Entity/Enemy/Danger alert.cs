@@ -1,8 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dangeralert : Enemy , IShoot
+public class Dangeralert : Enemy , IShoot //override มาจาก Enemy และ Abstract interfere จาก IShoot
 {
     
     public float speed;
