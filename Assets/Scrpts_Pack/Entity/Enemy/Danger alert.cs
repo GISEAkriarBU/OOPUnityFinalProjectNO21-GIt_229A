@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dangeralert : Enemy , IShoot //override มาจาก Enemy และ Abstract interfere จาก IShoot
+public class Dangeralert : Enemy , IShoot //override มาจาก Enemy  และ ใช้ interfere จาก IShoot
 {
     
-    public float speed;
+    public float Speed;
    
     [SerializeField] private Player player;
-    // Distance to start shooting
+    // Distance เพื่อใช้ dectect ระยะ
     private float distance;
-    public float shootingRange = 10f;
+    public float ShootingRange = 10f;
 
     [SerializeField]
     private GameObject bullet;
@@ -24,23 +24,29 @@ public class Dangeralert : Enemy , IShoot //override มาจาก Enemy แ�
     public float BulletTimer { get; set; }
     [field: SerializeField]
     public float BulletWaitTime { get; set; }
+    private void Start()
+    {
+        this.DamageHit = 20;
+        Debug.Log($" enemy chase at you");
+        Init(60);
+    }
     private void FixedUpdate()
     {
         BulletWaitTime += Time.deltaTime;
         Behaviour();
     }
 
-    public override void OnHitWith(Entity entity) { if (entity is Player) { entity.TakeDamage(this.DamageHit); } }
+    public override void OnHitWith(Entity entity) { if (entity is Player) { entity.TakeDamage(this.DamageHit);  } }
 
     public override void Behaviour()
     {
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
 
-        transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, Speed * Time.deltaTime);
         //for shoot
         float distanceP = direction.magnitude;
-        if (distanceP <= shootingRange) { Shoot(); }
+        if (distanceP <= ShootingRange) { Shoot(); }
 
     }
     public void Shoot()

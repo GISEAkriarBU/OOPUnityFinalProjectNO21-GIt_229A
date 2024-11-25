@@ -15,7 +15,10 @@ public class Player : Entity,IShoot
     [field: SerializeField] public float BulletTimer { get; set; }
     [field: SerializeField] public float BulletWaitTime { get; set; }
 
-
+    private void Start()
+    {
+        Init(20);
+    }
     private void Update() { Shoot(); }
     void FixedUpdate() { BulletWaitTime += Time.deltaTime; }
 
@@ -30,11 +33,13 @@ public class Player : Entity,IShoot
             BulletWaitTime = 0;
         }
     }
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
         if (enemy != null) { OnHitWith(enemy); }
     }
-    public void OnHitWith(Enemy enemy) { TakeDamage(enemy.DamageHit); }
+   
+    public void OnHitWith(Enemy enemy) { TakeDamage(enemy.DamageHit); Destroy(enemy.gameObject); }
 
 }

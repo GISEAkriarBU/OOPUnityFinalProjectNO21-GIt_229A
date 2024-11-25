@@ -7,7 +7,8 @@ public class RedEnergyBullet : _Weapon //override มาจาก _Weapon
     [SerializeField] private Rigidbody2D rb2d;
     private float speed;
 
-    public override void OnHitWith(Entity player) { if (player is Player) { player.TakeDamage(this.Damage); Destroy(this.gameObject); }  else if (player is not Player) { Destroy(this.gameObject); } }
+    public override void OnHitWith(Entity player) //polymorph
+    { if (player is Player) { player.TakeDamage(this.Damage); Destroy(this.gameObject); }  else if (player is not Player) { Destroy(this.gameObject); } }
 
     private void Start()
     {
@@ -17,10 +18,10 @@ public class RedEnergyBullet : _Weapon //override มาจาก _Weapon
 
     private void FixedUpdate()
     {
-
         Move();
-    }
-    public override void Move()
+    } 
+   
+    public override void Move()//polymorph
     {
         float newLocationX = transform.position.x - speed * Time.fixedDeltaTime;
         float newLocationY = transform.position.y;

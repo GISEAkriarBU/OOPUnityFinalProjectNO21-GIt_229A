@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
-public abstract class _Weapon : MonoBehaviour //override ไปสู่อาวุธสองชิ้น 
+public abstract class _Weapon : MonoBehaviour 
 {
     [SerializeField]
     private int damage;
     public int Damage { get { return damage; } set { damage = value; } }
 
-    public IShoot shooter;
-    public abstract void OnHitWith (Entity entity);
-    public abstract void Move ();
-    
+    protected IShoot shooter;
+    public abstract void OnHitWith (Entity entity);//override ไปสู่อาวุธสองชิ้น 
+    public abstract void Move (); //override ไปสู่อาวุธสองชิ้น 
+
     public void Init(int newDamage, IShoot newOwner)
     {
         Damage = newDamage;
@@ -25,11 +25,5 @@ public abstract class _Weapon : MonoBehaviour //override ไปสู่อา�
         Destroy(this.gameObject, 5f);
     }
 
-    public int GetShootDirection()
-    {
-        float shootDir = shooter.BulletSpawn.position.x - shooter.BulletSpawn.parent.position.x;
-        if (shootDir > 0)
-            return 1;
-        else return -1;
-    }
+   
 }

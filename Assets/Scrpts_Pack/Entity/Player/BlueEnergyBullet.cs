@@ -6,11 +6,12 @@ using UnityEngine.TextCore.Text;
 public class BlueEnergyBullet : _Weapon //override มาจาก _Weapon  
 {
     private float speed;
-    public override void OnHitWith(Entity enemy) { if (enemy is Enemy) { enemy.TakeDamage(this.Damage); Destroy(this.gameObject); } else if (enemy is not Enemy){ Destroy(this.gameObject); } }
+    public override void OnHitWith(Entity enemy) //polymorph
+    { if (enemy is Enemy) { enemy.TakeDamage(this.Damage); Destroy(this.gameObject); } else if (enemy is not Enemy){ Destroy(this.gameObject); } }
 
     private void Start()
     {
-        speed = 4.0f * GetShootDirection();
+        speed = 10.0f ;
     }
 
     private void FixedUpdate()
@@ -18,8 +19,10 @@ public class BlueEnergyBullet : _Weapon //override มาจาก _Weapon
 
         Move();
     }
+    
+    
 
-    public override void Move()
+    public override void Move()//polymorph
     {
         
         Vector3 pos = transform.position;

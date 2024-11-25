@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerControllMovement : MonoBehaviour //ใช้ควบคุมตัวละครหลัก
 {
-    public float moveSpeed = 5f; 
+    public float MoveSpeed = 5f; 
     private Camera mainCamera;
 
     void Start()
@@ -17,7 +17,7 @@ public class PlayerControllMovement : MonoBehaviour //ใช้ควบคุ�
     {
        
         float verticalInput = Input.GetAxis("Vertical");
-        Vector3 movement = new Vector3(0, verticalInput * moveSpeed * Time.deltaTime, 0);
+        Vector3 movement = new Vector3(0, verticalInput * MoveSpeed * Time.deltaTime, 0);
         transform.position += movement;
 
        

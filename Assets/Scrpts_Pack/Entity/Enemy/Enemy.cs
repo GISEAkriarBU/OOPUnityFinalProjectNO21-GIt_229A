@@ -9,5 +9,5 @@ public abstract class Enemy : Entity //ใช้เป็นแม่ฐาน�
     public int DamageHit { get { return damagehit; } set { damagehit = value; } }
     public abstract void OnHitWith(Entity entity);
     public abstract void Behaviour();
-    private void Start () { Behaviour(); }
+    private void Start () { Behaviour();  }
 }

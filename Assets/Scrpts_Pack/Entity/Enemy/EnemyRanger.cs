@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyRanger : Enemy , IShoot //override มาจาก Enemy และ Abstract interfere จาก IShoot
+public class EnemyRanger : Enemy , IShoot //override มาจาก Enemy และ ใช้ interfere จาก IShoot
 {
     [SerializeField] private Player player;
     // Distance to start shooting
     private float distance;
-    public float shootingRange = 10f; 
+    public float ShootingRange = 10f; 
     
     [SerializeField]
     private GameObject bullet;
@@ -24,7 +24,9 @@ public class EnemyRanger : Enemy , IShoot //override มาจาก Enemy แ�
 
     private void Start()
     {
+        this.DamageHit = 20;
         Debug.Log($" enemy look at you");
+        Init(20);
     }
 
     private void Update()
@@ -44,7 +46,7 @@ public class EnemyRanger : Enemy , IShoot //override มาจาก Enemy แ�
         transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
         //for shoot
         float distanceP = direction.magnitude;
-        if (distanceP <= shootingRange) { Shoot(); }
+        if (distanceP <= ShootingRange) { Shoot(); }
     }
 
     public void Shoot()
